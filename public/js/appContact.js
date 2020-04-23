@@ -19,7 +19,7 @@ formData.addEventListener('submit' , (event) => {
     }).then((result) => {
         result.json().then((res) => {
             if(res.error){
-                console.log(res.error);
+                res.status(200).send({response});
             }else{
                 console.log(res.response);
             }

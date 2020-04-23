@@ -1,5 +1,6 @@
 var {Elements} = require('./models/elements-model')
 var {Contact} = require('./models/contact-model');
+var {Info} = require('./models/info-model');
 
 var {ObjectID} = require('mongodb')
 var express = require('express')
@@ -34,6 +35,33 @@ route.post('/contact' , (req , res) => {
     })
 })
 
+route.get('/element' , (req, res) => {
+    res.render('elementAdd');
+});
+
+route.post('/element/info' , (req ,res) => {
+    var infoElement = new Info({
+        elementName: req.body.elementName, 
+        atomNumber: req.body.atomNumber, 
+        atomMass: req.body.atomMass, 
+        electonegative: req.body.electonegative, 
+        density: req.body.density, 
+        meltPoint: req.body.meltPoint, 
+        boilPoint: req.body.boilPoint, 
+        vRadius: req.body.vRadius, 
+        ionRadius: req.body.ionRadius, 
+        isotopes: req.body.isotopes, 
+        eShell: req.body.eShell, 
+        energyFirstIon: req.body.energyFirstIon, 
+        dicoverer: req.body.dicoverer 
+    })
+
+    infoElement.save().then((response) => {
+        res.status(200).send({response});
+    }, (error) => {
+        res.status(400).send({error});
+    })
+})
 
 route.listen(PORT , ()=>{
     console.log(`Server running on PORT = ${PORT}`)
