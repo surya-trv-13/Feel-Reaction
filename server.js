@@ -1,4 +1,5 @@
 var {Elements} = require('./models/elements-model')
+var {Contact} = require('./models/contact-model');
 
 var {ObjectID} = require('mongodb')
 var express = require('express')
@@ -19,6 +20,19 @@ route.get('/' , (req,res) => {
     })
 })
 
+route.post('/contact' , (req , res) => {
+    var contact = new Contact({
+        name : req.body.name,
+        email : req.body.email,
+        textBox : req.body.textBox
+    })
+
+    contact.save().then((response) => {   
+        res.status(200).send({response});
+    }, (error) => {
+        res.status(400).send({error});
+    })
+})
 
 
 route.listen(PORT , ()=>{

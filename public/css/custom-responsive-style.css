@@ -1,5 +1,8 @@
 /*Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575px) {
+  body{
+    overflow-x: hidden;
+  }
   /* header style */
   #Header .mobile-menu ul li {
     list-style: none;
@@ -134,6 +137,9 @@
 }
 /*Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767px) {
+  body{
+    overflow-x: hidden;
+  }
   /* Header style */
   .navbar-nav {
     background-color: rgba(0, 0, 0, 0.5);
@@ -243,6 +249,9 @@
 }
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991px) {
+  body{
+    overflow-x: hidden;
+  }
   /* Header style */
   .navbar-nav {
     background-color: rgba(0, 0, 0, 0.5);
@@ -324,6 +333,9 @@
 }
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) and (max-width: 1199px) {
+  body{
+    overflow-x: hidden;
+  }
   /* portfolio section style */
   #Portfolio .each-portfolio .hover-cont-wrap {
     position: relative;
@@ -344,7 +356,7 @@
     width: 87%;
   }
 }
-/*Extra large devices (large desktops, 1200px and up)*/
+/* Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
     ...
-}
+} */

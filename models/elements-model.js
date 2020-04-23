@@ -2,11 +2,11 @@ var {mongoose} = require('../Database-Manager/db');
 
 var Elements = mongoose.model('Element-model',{
     name : {
-        require : true,
+        required : true,
         type: String
     },
     model : {
-        require : true,
+        required : true,
         type : Buffer
     }
 });
