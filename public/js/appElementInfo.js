@@ -1,4 +1,4 @@
-var formValue = document.querySelector('form');
+var formValue = document.querySelector('#form1');
 var elementName = document.querySelector('#elementName')
 var atomNumber = document.querySelector('#atomNumber');
 var atomMass = document.querySelector('#atomMass');

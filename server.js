@@ -63,6 +63,39 @@ route.post('/element/info' , (req ,res) => {
     })
 })
 
+//GLTF Upload to Database
+var modelUpload = multer({
+    limits : {
+        fileSize : 20*1024*1024 
+    },
+    fileFilter(req, file , callback) {
+        if(!file.originalname.match(/\.(gltf|glb)$/)){
+            callback(new Error('Please Upload Models'));
+        }
+        callback(undefined , true);
+    }
+})
+
+route.post('/element/model',modelUpload.single('elementModel'), (req , res) => {
+    // console.log(req.file.buffer);
+    // console.log(req.body.name);
+    var str = req.file.originalname;
+    var nameValue = str.split(".");
+    var name = nameValue[0];
+    // console.log(name);
+    var elements = new Elements({
+        name : name,
+        model : req.file.buffer
+    })
+
+    elements.save().then((response) => {
+        res.status(200).send(response);
+    }, (error) => {
+        res.status(400).send(response);
+    })
+    
+})
+
 route.listen(PORT , ()=>{
     console.log(`Server running on PORT = ${PORT}`)
 });
