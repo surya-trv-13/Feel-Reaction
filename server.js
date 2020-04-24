@@ -92,8 +92,22 @@ route.post('/element/model',modelUpload.single('elementModel'), (req , res) => {
         res.status(200).send(response);
     }, (error) => {
         res.status(400).send(response);
-    })
-    
+    }) 
+})
+
+route.get('/element/:name/model', (req ,res) => {
+    try{
+        Elements.findOne(req.params.name).then((element) => {
+            if(!element || !element.model){
+                throw new Error('404');
+            }
+
+            res.set('Content-Type' , 'model/gltf.binary');
+            res.send(element.model);
+        })
+    }catch(e){
+        console.log(e);
+    }
 })
 
 route.listen(PORT , ()=>{
