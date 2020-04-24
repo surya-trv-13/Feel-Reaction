@@ -76,6 +76,7 @@ route.get('/element/:name/info' , (req , res) => {
                 throw new Error('404');
             }
             res.render('elementInfo' , {
+                title : element.elementName,
                 elementName : element.elementName,
                 atomNumber : element.atomNumber,
                 atomMass : element.atomMass,

@@ -138,6 +138,7 @@ ul, li {
 	font-size: 20px;
 	font-style: italic;
 	display: inline-block;
+	text-decoration: none;
 }
 #Header .site-logo-wrap .logo img {
 	display: inline-block;
@@ -537,11 +538,26 @@ ul, li {
 	font-weight: 300;
 	border-radius: 40px;
 }
+
 #About .about-wrapper .GoAR:hover{
 	background-color: peru;
 	color: #f0f0f0;
-	
-	
+}
+#About .about-wrapper .downMarker{
+	width: 220px;
+	height: 80px;
+	background-color: #f0f0f0;
+	margin : 5px;
+	border-color: peru;
+	color: peru;
+	font-size: 1.5em;
+	font-family: Arial Rounded MT;
+	font-weight: 100;
+	border-radius: 40px;
+}
+#About .about-wrapper .downMarker:hover{
+	background-color: peru;
+	color: #f0f0f0;
 }
 #About:after {
 	content: '';
