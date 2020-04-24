@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>{{title}}</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+	    <script src = "https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+	    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+	    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
+
+        <script>
+            AFRAME.registerComponent('lithium', {
+                init: function () {
+                    const castle = document.querySelector("#castle");
+                    const text = document.querySelector('#text-box');
+                    castle.addEventListener('click', function (event) {
+                        if(text.object3D.visible == false && event.detail.cursorEl){
+                            text.object3D.visible = true;
+                //			window.location.href = 'https://www.github.com';
+		            	    castle.object3D.visibe = false;
+                        } 
+                    });
+                }
+            });
+        </script>
+    </head>
+    <body style="margin: 0px;overflow hidden;">
+        <a-scene id="thescene" cursor="rayOrigin: mouse" raycaster="objects : .clickable" embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+            <a-assets>
+                <a-asset-item id="mega" src="/element/Lithium/model"></a-asset-item>
+		        
+            </a-assets>
+            <a-marker type='barcode' value='6'>
+                <a-entity 
+                    gltf-model="#mega" 
+                    lithium 
+                    cursor-listen 
+                    scale="0.5 0.5 0.5" 
+                    position="0 0 0" 
+                    rotation="0 0 0" 
+                    id="castle" 
+                    class="clickable"  
+                    animation-mixer>
+                </a-entity>
+                <a-text 
+                    value="Learn More" 
+                    visible="false" 
+                    id="text-box" 
+                    class="clickable" 
+                    scale = "1 1 1" 
+                    position="1 0 0" 
+                    rotation="-84.347 54.042 -51.893" 
+                    color="red">
+                </a-text>
+            </a-marker>
+            <a-entity camera look-controls>
+            </a-entity>
+        </a-scene>
+    </body>
+</html>

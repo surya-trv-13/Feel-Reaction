@@ -1,6 +1,6 @@
 var {Elements} = require('./models/elements-model')
-var {Contact} = require('./models/contact-model');
-var {Info} = require('./models/info-model');
+var {Contact} = require('./models/contact-model')
+var {Info} = require('./models/info-model')
 
 var {ObjectID} = require('mongodb')
 var express = require('express')
@@ -18,6 +18,12 @@ route.set('view engine','hbs')
 route.get('/' , (req,res) => {
     res.render('index' , {
         title : 'Feel-Reaction'
+    })
+})
+
+route.get('/augmented-reality' , (req , res) => {
+    res.render('ARexperience' , {
+        title : 'AR-Experience'
     })
 })
 
@@ -77,12 +83,10 @@ var modelUpload = multer({
 })
 
 route.post('/element/model',modelUpload.single('elementModel'), (req , res) => {
-    // console.log(req.file.buffer);
-    // console.log(req.body.name);
     var str = req.file.originalname;
     var nameValue = str.split(".");
     var name = nameValue[0];
-    // console.log(name);
+    
     var elements = new Elements({
         name : name,
         model : req.file.buffer
@@ -97,16 +101,16 @@ route.post('/element/model',modelUpload.single('elementModel'), (req , res) => {
 
 route.get('/element/:name/model', (req ,res) => {
     try{
-        Elements.findOne(req.params.name).then((element) => {
+        Elements.findOne({name : req.params.name}).then((element) => {
             if(!element || !element.model){
                 throw new Error('404');
             }
 
-            res.set('Content-Type' , 'model/gltf.binary');
-            res.send(element.model);
+            res.set('Content-Type' , 'model/gltf.binary')
+            res.send(element.model)
         })
     }catch(e){
-        console.log(e);
+        console.log(e)
     }
 })
 
