@@ -69,6 +69,35 @@ route.post('/element/info' , (req ,res) => {
     })
 })
 
+route.get('/element/:name/info' , (req , res) => {
+    try{
+        Info.findOne({elementName : req.params.name}).then((element) => {
+            if(!element){
+                throw new Error('404');
+            }
+            res.render('elementInfo' , {
+                elementName : element.elementName,
+                atomNumber : element.atomNumber,
+                atomMass : element.atomMass,
+                electonegative : element.electonegative,
+                density : element.density,
+                meltPoint : element.meltPoint,
+                boilPoint : element.boilPoint,
+                vRadius : element.vRadius,
+                ionRadius : element.ionRadius,
+                isotopes: element.isotopes, 
+                eShell : element.eShell,
+                energyFirstIon : element.energyFirstIon,
+                dicoverer : element.dicoverer
+            });
+        })
+    }catch(e){
+        console.log(e);
+        
+    }
+    
+})
+
 //GLTF Upload to Database
 var modelUpload = multer({
     limits : {
