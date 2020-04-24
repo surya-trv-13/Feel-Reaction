@@ -7,14 +7,53 @@
 	    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
 
         <script>
-            AFRAME.registerComponent('lithium', {
+            AFRAME.registerComponent('hydrogen', {
                 init: function () {
-                    const castle = document.querySelector("#castle");
-                    const text = document.querySelector('#text-box');
+                    const castle = document.querySelector("#castle-1");
+                    const text = document.querySelector('#text-box-1');
                     castle.addEventListener('click', function (event) {
                         if(text.object3D.visible == false && event.detail.cursorEl){
                             text.object3D.visible = true;
                     		window.location.href = '/element/Hydrogen/info';
+		            	    castle.object3D.visibe = false;
+                        } 
+                    });
+                }
+            });
+            AFRAME.registerComponent('helium', {
+                init: function () {
+                    const castle = document.querySelector("#castle-2");
+                    const text = document.querySelector('#text-box-2');
+                    castle.addEventListener('click', function (event) {
+                        if(text.object3D.visible == false && event.detail.cursorEl){
+                            text.object3D.visible = true;
+                    		window.location.href = '/element/Helium/info';
+		            	    castle.object3D.visibe = false;
+                        } 
+                    });
+                }
+            });
+            AFRAME.registerComponent('lithium', {
+                init: function () {
+                    const castle = document.querySelector("#castle-3");
+                    const text = document.querySelector('#text-box-3');
+                    castle.addEventListener('click', function (event) {
+                        if(text.object3D.visible == false && event.detail.cursorEl){
+                            text.object3D.visible = true;
+                    		window.location.href = '/element/Lithium/info';
+		            	    castle.object3D.visibe = false;
+                        } 
+                    });
+                }
+            });
+            AFRAME.registerComponent('lithium', {
+                init: function () {
+                    const castle = document.querySelector("#castle-3");
+                    const text = document.querySelector('#text-box-3');
+                    castle.addEventListener('click', function (event) {
+                        if(text.object3D.visible == false && event.detail.cursorEl){
+                            text.object3D.visible = true;
+                    		window.location.href = '/element/Beryllium/info';
 		            	    castle.object3D.visibe = false;
                         } 
                     });
@@ -25,28 +64,103 @@
     <body style="margin: 0px;overflow hidden;">
         <a-scene id="thescene" cursor="rayOrigin: mouse" raycaster="objects : .clickable" embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
             <a-assets>
-                <a-asset-item id="mega" src="/element/Lithium/model"></a-asset-item>
-		        
+                <a-asset-item id="hydrogen" src="/element/Hydrogen/model"></a-asset-item>
+		        <a-asset-item id="helium" src="/element/Helium/model"></a-asset-item>
+                <a-asset-item id="lithium" src="/element/Lithium/model"></a-asset-item>
+                <a-asset-item id="beryllium" src="/element/Beryllium/model"></a-asset-item>
             </a-assets>
-            <a-marker type='barcode' value='6'>
+
+            <a-marker type='barcode' value='1'>
                 <a-entity 
-                    gltf-model="#mega" 
-                    lithium 
+                    gltf-model="#hydrogen" 
+                    hydrogen 
                     cursor-listen 
                     scale="0.5 0.5 0.5" 
                     position="0 0 0" 
                     rotation="0 0 0" 
-                    id="castle" 
+                    id="castle-1" 
                     class="clickable"  
                     animation-mixer>
                 </a-entity>
                 <a-text 
                     value="Learn More" 
                     visible="false" 
-                    id="text-box" 
+                    id="text-box-1" 
                     class="clickable" 
                     scale = "1 1 1" 
-                    position="1 0 0" 
+                    position="0 1 0" 
+                    rotation="-84.347 54.042 -51.893" 
+                    color="red">
+                </a-text>
+            </a-marker>
+
+            <a-marker type='barcode' value='2'>
+                <a-entity 
+                    gltf-model="#helium" 
+                    helium 
+                    cursor-listen 
+                    scale="0.5 0.5 0.5" 
+                    position="0 0 0" 
+                    rotation="0 0 0" 
+                    id="castle-2" 
+                    class="clickable"  
+                    animation-mixer>
+                </a-entity>
+                <a-text 
+                    value="Learn More" 
+                    visible="false" 
+                    id="text-box-2" 
+                    class="clickable" 
+                    scale = "1 1 1" 
+                    position="0 1 0" 
+                    rotation="-84.347 54.042 -51.893" 
+                    color="red">
+                </a-text>
+            </a-marker>
+
+            <a-marker type='barcode' value='3'>
+                <a-entity 
+                    gltf-model="#lithium" 
+                    lithium 
+                    cursor-listen 
+                    scale="0.5 0.5 0.5" 
+                    position="0 0 0" 
+                    rotation="0 0 0" 
+                    id="castle-3" 
+                    class="clickable"  
+                    animation-mixer>
+                </a-entity>
+                <a-text 
+                    value="Learn More" 
+                    visible="false" 
+                    id="text-box-3" 
+                    class="clickable" 
+                    scale = "1 1 1" 
+                    position="0 1 0" 
+                    rotation="-84.347 54.042 -51.893" 
+                    color="red">
+                </a-text>
+            </a-marker>
+
+            <a-marker type='barcode' value='4'>
+                <a-entity 
+                    gltf-model="#beryllium" 
+                    beryllium 
+                    cursor-listen 
+                    scale="0.5 0.5 0.5" 
+                    position="0 0 0" 
+                    rotation="0 0 0" 
+                    id="castle-4" 
+                    class="clickable"  
+                    animation-mixer>
+                </a-entity>
+                <a-text 
+                    value="Learn More" 
+                    visible="false" 
+                    id="text-box-4" 
+                    class="clickable" 
+                    scale = "1 1 1" 
+                    position="0 1 0" 
                     rotation="-84.347 54.042 -51.893" 
                     color="red">
                 </a-text>
