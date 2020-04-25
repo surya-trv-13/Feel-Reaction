@@ -62,13 +62,15 @@
         </script>
     </head>
     <body style="margin: 0px;overflow hidden;">
-        <a-scene id="thescene" cursor="rayOrigin: mouse" raycaster="objects : .clickable" embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+        <a-scene id="thescene" embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
             <a-assets>
                 <a-asset-item id="hydrogen" src="/element/Hydrogen/model"></a-asset-item>
 		        <a-asset-item id="helium" src="/element/Helium/model"></a-asset-item>
                 <a-asset-item id="lithium" src="/element/Lithium/model"></a-asset-item>
                 <a-asset-item id="beryllium" src="/element/Beryllium/model"></a-asset-item>
             </a-assets>
+            <a-entity camera look-controls raycaster="objects : .clickable" cursor="rayOrigin : mouse">
+            </a-entity>
 
             <a-marker type='barcode' value='1'>
                 <a-entity 
@@ -165,8 +167,7 @@
                     color="red">
                 </a-text>
             </a-marker>
-            <a-entity camera look-controls>
-            </a-entity>
+            
         </a-scene>
     </body>
 </html>
